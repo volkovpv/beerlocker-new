@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  div.col-md-4.col-md-offset-4
+    h1= title
+    div= error
+    div
+      form(action="/auth", method="POST")
+        input.form-control(name="login", type="text", placeholder="Login")
+        input.mt-5.form-control(name="password", type="password", placeholder="Password")
+        button.btn.btn-lg.btn-primary.mt-15.btn-block(type="submit") To auth
+    div.mt-15=resData

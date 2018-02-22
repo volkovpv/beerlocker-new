@@ -1,0 +1,14 @@
+#beerlocker-new
+
+/.idea
+/node_modules
+*.iml
+
+# Logs
+logs
+*.log
+npm-debug.log*
+logs.json
+
+# Optional npm cache directory
+.npm
