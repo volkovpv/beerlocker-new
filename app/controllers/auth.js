@@ -10,9 +10,9 @@ const User = require('../models/user');
 const jwtsecret = "mysecretkey";
 
 const optLocalStrategy = {
-  usernameField: 'email',
-  passwordField: 'password',
-  session: false
+  usernameField : 'email',
+  passwordField : 'password',
+  session       : false
 };
 
 const optJwtStrategy = {

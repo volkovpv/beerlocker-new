@@ -1,6 +1,6 @@
 'use strict';
-let Router = require('koa-router'),
-  jwt           = require('jsonwebtoken');
+const Router  = require('koa-router'),
+  jwt         = require('jsonwebtoken');
 
 let router = new Router();
 
@@ -22,7 +22,16 @@ router.post('/login', auth.isAuthenticated, function (ctx, next) {
     };
     const token = jwt.sign(payload, jwtsecret); //здесь создается JWT
 
+    ctx.cookies.set('xsrf_token', '1234', {httpOnly: false});//токен, который будет передаваться в заголовке "X-CSRF-TOKEN"
+    ctx.cookies.set('access_token', token, {httpOnly: true, secure: false});//токен, который будет использоваться в куках передаваемых на сервер при любом запросе
+
+
+    //let kkk = ctx.cookies.get('foo');
+
     ctx.body = {user: user.displayName, token: 'JWT ' + token};
+
+
+
 
     //куки
     //http://www.tutorialspoint.com/koajs/koajs_cookies.htm
@@ -31,6 +40,8 @@ router.post('/login', auth.isAuthenticated, function (ctx, next) {
 });
 
 router.get('/login', (ctx, next) => {
+  let kkkkkk = ctx.cookies.get('access_token');
+  let ssssss = ctx.cookies.get('csrf_token');
   ctx.render('login', {
     title: 'Login'
   }, true)
