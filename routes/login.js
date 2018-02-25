@@ -24,18 +24,7 @@ router.post('/login', auth.isAuthenticated, function (ctx, next) {
 
     ctx.cookies.set('xsrf_token', '1234', {httpOnly: false});//токен, который будет передаваться в заголовке "X-CSRF-TOKEN"
     ctx.cookies.set('access_token', token, {httpOnly: true, secure: false});//токен, который будет использоваться в куках передаваемых на сервер при любом запросе
-
-
-    //let kkk = ctx.cookies.get('foo');
-
     ctx.body = {user: user.displayName, token: 'JWT ' + token};
-
-
-
-
-    //куки
-    //http://www.tutorialspoint.com/koajs/koajs_cookies.htm
-    //http://www.w3ii.com/ru/koajs/koajs_cookies.html
   }
 });
 
